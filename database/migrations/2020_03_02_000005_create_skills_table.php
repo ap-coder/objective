@@ -10,9 +10,19 @@ class CreateSkillsTable extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('skill');
+            $table->string('name');
             $table->timestamps();
             $table->softDeletes();
         });
+    }
+
+        /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('skills');
     }
 }

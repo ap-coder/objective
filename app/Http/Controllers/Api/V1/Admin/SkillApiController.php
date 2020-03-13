@@ -17,7 +17,8 @@ class SkillApiController extends Controller
     {
         abort_if(Gate::denies('skill_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new SkillResource(Skill::all());
+        return new SkillResource(Skill::with(['applicant'])->get());
+
     }
 
     public function store(StoreSkillRequest $request)
@@ -27,13 +28,15 @@ class SkillApiController extends Controller
         return (new SkillResource($skill))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+
     }
 
     public function show(Skill $skill)
     {
         abort_if(Gate::denies('skill_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new SkillResource($skill);
+        return new SkillResource($skill->load(['applicant']));
+
     }
 
     public function update(UpdateSkillRequest $request, Skill $skill)
@@ -43,6 +46,7 @@ class SkillApiController extends Controller
         return (new SkillResource($skill))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
+
     }
 
     public function destroy(Skill $skill)
@@ -52,5 +56,6 @@ class SkillApiController extends Controller
         $skill->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+
     }
 }

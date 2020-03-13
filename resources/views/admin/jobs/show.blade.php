@@ -25,10 +25,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.job.fields.job_title') }}
+                            {{ trans('cruds.job.fields.name') }}
                         </th>
                         <td>
-                            {{ $job->job_title }}
+                            {{ $job->name }}
                         </td>
                     </tr>
                 </tbody>

@@ -12,12 +12,12 @@ class ApplicantsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('applicants')->delete();
-        
+
         \DB::table('applicants')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'Russ Waters',
@@ -29,7 +29,7 @@ class ApplicantsTableSeeder extends Seeder
                 'deleted_at' => NULL,
                 'job_id' => 1,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'Dakota Kautzer',
@@ -41,7 +41,7 @@ class ApplicantsTableSeeder extends Seeder
                 'deleted_at' => NULL,
                 'job_id' => 1,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'Miss Cortez Hilpert',
@@ -53,7 +53,7 @@ class ApplicantsTableSeeder extends Seeder
                 'deleted_at' => NULL,
                 'job_id' => 1,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'name' => 'Katarina Mills',
@@ -65,7 +65,7 @@ class ApplicantsTableSeeder extends Seeder
                 'deleted_at' => NULL,
                 'job_id' => 1,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'name' => 'Jordane Hilll IV',
@@ -77,7 +77,7 @@ class ApplicantsTableSeeder extends Seeder
                 'deleted_at' => NULL,
                 'job_id' => 2,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'name' => 'Kraig Oga',
@@ -89,7 +89,7 @@ class ApplicantsTableSeeder extends Seeder
                 'deleted_at' => NULL,
                 'job_id' => 2,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'name' => 'Hilbert Price',
@@ -101,7 +101,7 @@ class ApplicantsTableSeeder extends Seeder
                 'deleted_at' => NULL,
                 'job_id' => 2,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'name' => 'Mikel Murazik',
@@ -114,7 +114,7 @@ class ApplicantsTableSeeder extends Seeder
                 'job_id' => 2,
             ),
         ));
-        
-        
+
+
     }
 }

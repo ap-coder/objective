@@ -9,9 +9,9 @@
 
     {{-- <a href="#" class="btn btn-warning" style="margin-left:5px;" data-toggle="modal" data-target="#myModal">Formatted Page</a> --}}
 
-            <a target="_blank" class="btn btn-warning" href="{{ route("admin.applicants.formatted") }}">
+            {{-- <a target="_blank" class="btn btn-warning" href="{{ route("admin.applicants.formatted") }}">
                 Formatted Page
-            </a>
+            </a> --}}
         </div>
     </div>
 @endcan
@@ -64,7 +64,7 @@
                                 {{ $applicant->id ?? '' }}
                             </td>
                             <td>
-                                {{ $applicant->job->job_title ?? '' }}
+                                {{ $applicant->job->name ?? '' }}
                             </td>
                             <td>
                                 {{ $applicant->name ?? '' }}
@@ -77,7 +77,7 @@
                             </td>
                             <td>
                                 @foreach($applicant->skills as $key => $item)
-                                    <span class="badge badge-info">{{ $item->skill }}</span>
+                                    <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
                             </td>
                             <td>

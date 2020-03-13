@@ -19,8 +19,7 @@ class UpdateSkillRequest extends FormRequest
     public function rules()
     {
         return [
-            'skill' => [
-                'required'],
+            'name' => ['required'],
         ];
     }
 }

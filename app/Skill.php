@@ -18,9 +18,16 @@ class Skill extends Model
     ];
 
     protected $fillable = [
-        'skill',
+        'name',
         'created_at',
         'updated_at',
         'deleted_at',
+        'applicant_id',
     ];
+
+    public function applicant()
+    {
+        return $this->belongsTo(Applicant::class, 'applicant_id');
+
+    }
 }

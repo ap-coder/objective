@@ -25,10 +25,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.skill.fields.skill') }}
+                            {{ trans('cruds.skill.fields.name') }}
                         </th>
                         <td>
-                            {{ $skill->skill }}
+                            {{ $skill->name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.skill.fields.applicant') }}
+                        </th>
+                        <td>
+                            {{ $skill->applicant->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

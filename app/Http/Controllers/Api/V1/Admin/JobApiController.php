@@ -18,6 +18,7 @@ class JobApiController extends Controller
         abort_if(Gate::denies('job_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new JobResource(Job::all());
+
     }
 
     public function store(StoreJobRequest $request)
@@ -27,6 +28,7 @@ class JobApiController extends Controller
         return (new JobResource($job))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+
     }
 
     public function show(Job $job)
@@ -34,6 +36,7 @@ class JobApiController extends Controller
         abort_if(Gate::denies('job_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new JobResource($job);
+
     }
 
     public function update(UpdateJobRequest $request, Job $job)
@@ -43,6 +46,7 @@ class JobApiController extends Controller
         return (new JobResource($job))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
+
     }
 
     public function destroy(Job $job)
@@ -52,5 +56,6 @@ class JobApiController extends Controller
         $job->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+
     }
 }

@@ -35,6 +35,13 @@ class Applicant extends Model
 
     public function skills()
     {
-        return $this->belongsToMany(Skill::class);
+        return $this->hasMany(Skill::class, 'applicant_id', 'id');
+
+    }
+
+    public function applicantSkills()
+    {
+        return $this->hasMany(Skill::class, 'applicant_id', 'id');
+
     }
 }

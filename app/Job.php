@@ -18,7 +18,7 @@ class Job extends Model
     ];
 
     protected $fillable = [
-        'job_title',
+        'name',
         'created_at',
         'updated_at',
         'deleted_at',

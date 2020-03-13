@@ -17,34 +17,36 @@ class ApplicantApiController extends Controller
     {
         abort_if(Gate::denies('applicant_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ApplicantResource(Applicant::with(['job', 'skills'])->get());
+        return new ApplicantResource(Applicant::with(['job'])->get());
+
     }
 
     public function store(StoreApplicantRequest $request)
     {
         $applicant = Applicant::create($request->all());
-        $applicant->skills()->sync($request->input('skills', []));
 
         return (new ApplicantResource($applicant))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+
     }
 
     public function show(Applicant $applicant)
     {
         abort_if(Gate::denies('applicant_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ApplicantResource($applicant->load(['job', 'skills']));
+        return new ApplicantResource($applicant->load(['job']));
+
     }
 
     public function update(UpdateApplicantRequest $request, Applicant $applicant)
     {
         $applicant->update($request->all());
-        $applicant->skills()->sync($request->input('skills', []));
 
         return (new ApplicantResource($applicant))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
+
     }
 
     public function destroy(Applicant $applicant)
@@ -54,5 +56,6 @@ class ApplicantApiController extends Controller
         $applicant->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+
     }
 }

@@ -20,6 +20,7 @@ class ApplicantController extends Controller
     public function formatted()
     {
         $applicants = Applicant::all();
+        // $skills = Skill::where('applicant_id')->get();
 
         return view('admin.applicants.formatted', compact('applicants'));
     }
@@ -29,17 +30,18 @@ class ApplicantController extends Controller
         abort_if(Gate::denies('applicant_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $applicants = Applicant::all();
+        $skills = Skill::where('id', 'applicant_id')->get();
 
-        return view('admin.applicants.index', compact('applicants'));
+        return view('admin.applicants.index', compact('applicants', 'skills'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('applicant_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $jobs = Job::all()->pluck('job_title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $jobs = Job::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $skills = Skill::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $skills = Skill::all()->pluck('skill', 'id');
 
         return view('admin.applicants.create', compact('jobs', 'skills'));
     }
@@ -47,7 +49,8 @@ class ApplicantController extends Controller
     public function store(StoreApplicantRequest $request)
     {
         $applicant = Applicant::create($request->all());
-        $applicant->skills()->sync($request->input('skills', []));
+
+        // $applicant->skills()->sync($request->input('skills', []));
 
         return redirect()->route('admin.applicants.index');
     }
@@ -56,9 +59,10 @@ class ApplicantController extends Controller
     {
         abort_if(Gate::denies('applicant_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $jobs = Job::all()->pluck('job_title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $jobs = Job::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $skills = Skill::all()->pluck('skill', 'id');
+        $skills = Skill::where('applicant_id', $applicant->id)->pluck('name', 'id');
+        // $skills = Skill::where('applicant_id', $applicant->id)->get();
 
         $applicant->load('job', 'skills');
 
@@ -77,7 +81,7 @@ class ApplicantController extends Controller
     {
         abort_if(Gate::denies('applicant_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $applicant->load('job', 'skills');
+        $applicant->load('job', 'applicantSkills');
 
         return view('admin.applicants.show', compact('applicant'));
     }

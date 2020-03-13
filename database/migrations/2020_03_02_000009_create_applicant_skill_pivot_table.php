@@ -15,4 +15,16 @@ class CreateApplicantSkillPivotTable extends Migration
             $table->foreign('skill_id', 'skill_id_fk_1084689')->references('id')->on('skills')->onDelete('cascade');
         });
     }
+
+        /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::disableForeignKeyConstraints();
+
+        Schema::dropIfExists('applicant_skill');
+    }
 }

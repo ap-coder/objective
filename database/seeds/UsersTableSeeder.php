@@ -7,6 +7,8 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
+        \DB::table('users')->delete();
+
         $users = [
             [
                 'id'             => 1,

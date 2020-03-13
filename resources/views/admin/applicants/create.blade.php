@@ -45,7 +45,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.applicant.fields.website_helper') }}</span>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="skills">{{ trans('cruds.applicant.fields.skills') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -60,7 +60,7 @@
                     <span class="text-danger">{{ $errors->first('skills') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.applicant.fields.skills_helper') }}</span>
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="cover_letter">{{ trans('cruds.applicant.fields.cover_letter') }}</label>
                 <textarea class="form-control {{ $errors->has('cover_letter') ? 'is-invalid' : '' }}" name="cover_letter" id="cover_letter">{{ old('cover_letter') }}</textarea>

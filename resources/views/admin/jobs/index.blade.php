@@ -26,7 +26,7 @@
                             {{ trans('cruds.job.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.job.fields.job_title') }}
+                            {{ trans('cruds.job.fields.name') }}
                         </th>
                         <th>
                             &nbsp;
@@ -43,7 +43,7 @@
                                 {{ $job->id ?? '' }}
                             </td>
                             <td>
-                                {{ $job->job_title ?? '' }}
+                                {{ $job->name ?? '' }}
                             </td>
                             <td>
                                 @can('job_show')

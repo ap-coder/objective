@@ -10,12 +10,12 @@
         <form method="POST" action="{{ route("admin.jobs.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="job_title">{{ trans('cruds.job.fields.job_title') }}</label>
-                <input class="form-control {{ $errors->has('job_title') ? 'is-invalid' : '' }}" type="text" name="job_title" id="job_title" value="{{ old('job_title', '') }}" required>
-                @if($errors->has('job_title'))
-                    <span class="text-danger">{{ $errors->first('job_title') }}</span>
+                <label class="required" for="name">{{ trans('cruds.job.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                @if($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('name') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.job.fields.job_title_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.job.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

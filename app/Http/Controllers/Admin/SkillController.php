@@ -7,6 +7,7 @@ use App\Http\Requests\MassDestroySkillRequest;
 use App\Http\Requests\StoreSkillRequest;
 use App\Http\Requests\UpdateSkillRequest;
 use App\Skill;
+use App\Applicant;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +27,9 @@ class SkillController extends Controller
     {
         abort_if(Gate::denies('skill_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.skills.create');
+         $applicants = Applicant::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.skills.create', compact('applicants'));
     }
 
     public function store(StoreSkillRequest $request)
@@ -40,7 +43,11 @@ class SkillController extends Controller
     {
         abort_if(Gate::denies('skill_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.skills.edit', compact('skill'));
+        $applicants = Applicant::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $skill->load('applicant');
+
+        return view('admin.skills.edit', compact('applicants','skill'));
     }
 
     public function update(UpdateSkillRequest $request, Skill $skill)
@@ -53,6 +60,8 @@ class SkillController extends Controller
     public function show(Skill $skill)
     {
         abort_if(Gate::denies('skill_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $skill->load('applicant');
 
         return view('admin.skills.show', compact('skill'));
     }

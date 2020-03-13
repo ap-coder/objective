@@ -10,9 +10,19 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('job_title');
+            $table->string('name');
             $table->timestamps();
             $table->softDeletes();
         });
+    }
+
+            /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('jobs');
     }
 }
