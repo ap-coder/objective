@@ -21,7 +21,44 @@
                         </p>
                     </a>
                 </li>
-                @can('user_management_access')
+
+                @can('job_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.jobs.index") }}" class="nav-link {{ request()->is('admin/jobs') || request()->is('admin/jobs/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-address-card">
+
+                            </i>
+                            <p>
+                                <span>{{ trans('cruds.job.title') }}</span>
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('skill_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.skills.index") }}" class="nav-link {{ request()->is('admin/skills') || request()->is('admin/skills/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-arrow-alt-circle-right">
+
+                            </i>
+                            <p>
+                                <span>{{ trans('cruds.skill.title') }}</span>
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('applicant_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.applicants.index") }}" class="nav-link {{ request()->is('admin/applicants') || request()->is('admin/applicants/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-cogs">
+
+                            </i>
+                            <p>
+                                <span>{{ trans('cruds.applicant.title') }}</span>
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                                @can('user_management_access')
                     <li class="nav-item has-treeview {{ request()->is('admin/permissions*') ? 'menu-open' : '' }} {{ request()->is('admin/roles*') ? 'menu-open' : '' }} {{ request()->is('admin/users*') ? 'menu-open' : '' }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw fas fa-users">
@@ -70,42 +107,6 @@
                                 </li>
                             @endcan
                         </ul>
-                    </li>
-                @endcan
-                @can('job_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.jobs.index") }}" class="nav-link {{ request()->is('admin/jobs') || request()->is('admin/jobs/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-address-card">
-
-                            </i>
-                            <p>
-                                <span>{{ trans('cruds.job.title') }}</span>
-                            </p>
-                        </a>
-                    </li>
-                @endcan
-                @can('skill_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.skills.index") }}" class="nav-link {{ request()->is('admin/skills') || request()->is('admin/skills/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-arrow-alt-circle-right">
-
-                            </i>
-                            <p>
-                                <span>{{ trans('cruds.skill.title') }}</span>
-                            </p>
-                        </a>
-                    </li>
-                @endcan
-                @can('applicant_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.applicants.index") }}" class="nav-link {{ request()->is('admin/applicants') || request()->is('admin/applicants/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-cogs">
-
-                            </i>
-                            <p>
-                                <span>{{ trans('cruds.applicant.title') }}</span>
-                            </p>
-                        </a>
                     </li>
                 @endcan
                 <li class="nav-item">

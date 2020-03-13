@@ -12,29 +12,29 @@ class JobsTableSeeder extends Seeder
      */
     public function run()
     {
-
+        
 
         \DB::table('jobs')->delete();
-
+        
         \DB::table('jobs')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => 1,
                 'name' => 'Web Developer',
-                'created_at' => '2020-03-02 22:53:32',
-                'updated_at' => '2020-03-02 22:53:32',
+                'created_at' => '2020-03-12 23:50:35',
+                'updated_at' => '2020-03-12 23:50:35',
                 'deleted_at' => NULL,
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 2,
                 'name' => 'Designer',
-                'created_at' => '2020-03-02 22:53:40',
-                'updated_at' => '2020-03-02 22:53:40',
+                'created_at' => '2020-03-12 23:50:45',
+                'updated_at' => '2020-03-12 23:50:45',
                 'deleted_at' => NULL,
             ),
         ));
-
-
+        
+        
     }
 }
